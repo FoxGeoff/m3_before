@@ -11,6 +11,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.AspNetCore.Authentication.OpenIdConnect;
 using Microsoft.AspNetCore.Authentication.Cookies;
 using IdentityServer4.Services;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
 
 namespace SecuringAngularApps.STS
 {
@@ -84,6 +85,9 @@ namespace SecuringAngularApps.STS
 
             app.UseStaticFiles();
             app.UseCors("CorsPolicy");
+
+            //Activate - Authentication middleware
+            app.UseAuthentication();
 
             app.UseIdentityServer();
             app.UseMvcWithDefaultRoute();

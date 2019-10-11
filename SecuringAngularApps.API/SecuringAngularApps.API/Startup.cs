@@ -35,6 +35,16 @@ namespace SecuringAngularApps.API
                     .AllowCredentials();
                 });
             });
+            services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
+                .AddJwtBearer(options =>
+                {
+                    //base address of your identitysever
+                    options.Authority = "http://localhost:4242/";
+                    // dev debug, change to true for production
+                    options.RequireHttpsMetadata = false;
+                    //name of API resource (check it matches STS)
+                    options.Audience = "project-api";
+                });
             services.AddMvc();
         }
 
