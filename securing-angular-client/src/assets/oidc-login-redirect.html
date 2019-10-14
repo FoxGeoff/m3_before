@@ -5,10 +5,12 @@
   };
   var mgr = new Oidc.UserManager(config);
   mgr.signinRedirectCallback().then(() => {
+    //Comment Out to check URL for ID and Access Tokens
         window.history.replaceState({},
             window.document.title,
             window.location.origin);
         window.location = "/";
+      
     }, error => {
         console.error(error);
     });
